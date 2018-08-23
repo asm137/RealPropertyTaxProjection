@@ -43,6 +43,7 @@
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
       <HintPath>..\..\..\..\Program Files\System.Data.SQLite\2015\bin\System.Data.SQLite.dll</HintPath>
@@ -60,10 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Intangic\RPTP\Business\Exceptions\RealPropertyTaxProjectionException.cs" />
-    <Compile Include="Intangic\RPTP\Business\Impl\FormSwitcher.cs" />
     <Compile Include="Intangic\RPTP\Business\Impl\RealPropertyTaxProjectionManager.cs" />
-    <Compile Include="Intangic\RPTP\Business\Interfaces\IFormService.cs" />
-    <Compile Include="Intangic\RPTP\Business\Interfaces\IFormSwitcher.cs" />
     <Compile Include="Intangic\RPTP\Business\Interfaces\IRealPropertyTaxProjectionService.cs" />
     <Compile Include="Intangic\RPTP\Data\DAO\Impl\NetOfficeDAO.cs" />
     <Compile Include="Intangic\RPTP\Data\DAO\Interfaces\INetOfficeDAO.cs" />

@@ -9,15 +9,15 @@ using Intangic.RPTP.Factory;
 
 namespace Intangic.RealPropertyTaxProjectionServices.Tests
 {
-    [TestClass]
-    public class UnitTest1
+    [TestClass, Ignore]
+    public class RealPropertyTaxProjectionManagerTest
     {
         [TestMethod]
         public void TestMethod1()
         {
         }
 
-        [TestMethod]
+        [TestMethod, Ignore]
         public void Login_Sample_Test()
         {
             LoginRequest request = null;
