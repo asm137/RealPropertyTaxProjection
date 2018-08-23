@@ -52,7 +52,7 @@ namespace Intangic.RPTP.Business.Impl
                     int rowCount = excelRange.Rows.Count;
                     int colCount = excelRange.Columns.Count;
 
-                    System.Data.SQLite.SQLiteConnection cn = new SQLiteConnection("Data Source=C:\sqlite\test.db;Version=3;New=True;Compress=True;");
+                    System.Data.SQLite.SQLiteConnection cn = new SQLiteConnection(@"Data Source=C:\sqlite\test.db;Version=3;New=True;Compress=True;");
                     SQLiteCommand sqlite_cmd;
                     SQLiteDataReader sqlite_datareader;
 
