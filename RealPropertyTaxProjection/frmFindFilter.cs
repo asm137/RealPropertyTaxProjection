@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace RealPropertyTaxProjection
 {
-    public partial class Form1 : Form
+    public partial class frmFindFilter : Form
     {
-        public Form1()
+        public frmFindFilter()
         {
             InitializeComponent();
         }
