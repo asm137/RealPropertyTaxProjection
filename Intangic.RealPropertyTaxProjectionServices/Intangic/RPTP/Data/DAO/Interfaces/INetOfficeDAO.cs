@@ -11,5 +11,7 @@ namespace Intangic.RPTP.Data.DAO.Interfaces
     public interface INetOfficeDAO
     {
         ImportBuildingDataFileDAOResponse ImportBuildingDataFile(ImportBuildingDataFileRequest request);
+
+        //ExportBuildingDataAssessorFileResponse ExportBuildingDataAssessorFile(ExportBuildingDataAssessorFileRequest request);
     }
 }

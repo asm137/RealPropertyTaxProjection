@@ -18,6 +18,7 @@ namespace Intangic.RPTP.Domain
             this.IsLoginValid = false;
             this.IsAdmin = false;
             this.AccessLevel = -1;
+            this.Result = null;
         }
     }
 }

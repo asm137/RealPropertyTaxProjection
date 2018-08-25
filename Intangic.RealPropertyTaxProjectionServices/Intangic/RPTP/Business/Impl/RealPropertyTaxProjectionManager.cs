@@ -89,8 +89,8 @@ namespace Intangic.RPTP.Business.Impl
                     workBook.DisposeChildInstances();
                     workBook = null;
                     excelApplication.Quit();
-                    excelApplication.Dispose();
-                    excelApplication = null;
+                    //excelApplication.Dispose();
+                    //excelApplication = null;
                 }
 
                     //save to database
@@ -128,6 +128,41 @@ namespace Intangic.RPTP.Business.Impl
                 response = new SelectBuildingDataRecordResponse();
 
                 return response;
+            }
+            finally {
+                response = null;
+            }
+        }
+
+        public ExportBuildingDataAssessorFileResponse ExportBuildingDataAssessorFile(ExportBuildingDataAssessorFileRequest request) {
+            ExportBuildingDataAssessorFileResponse response = null;
+
+            try {
+                response = new ExportBuildingDataAssessorFileResponse();
+
+                Excel.Application excelApplication = null;
+
+                using (excelApplication = new Excel.Application()) {
+                    excelApplication.DisplayAlerts = false;
+                    Excel.Workbook workBook = excelApplication.Workbooks.Add(); //new Excel.Workbook(asd[0].Id.ToString());
+                    Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Sheets[1];
+
+                    workSheet.Name = "test sheet";
+                    workSheet.Cells[1, 1].Value = "hello 33";
+                    workSheet.Cells[1, 2].Value = "world";
+
+                    //workBook.Sheets.Add(workSheet);
+                    //excelApplication.Workbooks.Add(workBook);
+                    workBook.SaveAs("C:\\games\\test.xlsx");
+
+                    //workBook.DisposeChildInstances();
+                    //workBook = null;
+                    excelApplication.Quit();
+                    excelApplication.Dispose();
+                    excelApplication = null;
+                }
+
+                    return response;
             }
             finally {
                 response = null;

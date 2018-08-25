@@ -68,6 +68,8 @@
     <Compile Include="Intangic\RPTP\Domain\BuildingDataAssessor.cs" />
     <Compile Include="Intangic\RPTP\Domain\ComputeEquivalentTaxRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\ComputeEquivalentTaxResponse.cs" />
+    <Compile Include="Intangic\RPTP\Domain\ExportBuildingDataAssessorFileRequest.cs" />
+    <Compile Include="Intangic\RPTP\Domain\ExportBuildingDataAssessorFileResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\ExportDataToExcelFileRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\ExportDataToExcelFileResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\ImportBuildingDataFileDAOResponse.cs" />

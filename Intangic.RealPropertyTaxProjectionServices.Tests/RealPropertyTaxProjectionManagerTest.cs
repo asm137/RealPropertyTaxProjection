@@ -9,7 +9,7 @@ using Intangic.RPTP.Factory;
 
 namespace Intangic.RealPropertyTaxProjectionServices.Tests
 {
-    [TestClass, Ignore]
+    [TestClass]
     public class RealPropertyTaxProjectionManagerTest
     {
         IRealPropertyTaxProjectionService realPropertyTaxProjectionManager;
@@ -62,6 +62,12 @@ namespace Intangic.RealPropertyTaxProjectionServices.Tests
             //dispose objects
             response = null;
             request = null;
+        }
+
+        [TestMethod]
+        public void ExportBuildingDataAssessorFile_Success_Test()
+        {
+            realPropertyTaxProjectionManager.ExportBuildingDataAssessorFile(null);
         }
     }
 }
