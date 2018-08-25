@@ -47,5 +47,11 @@ namespace RealPropertyTaxProjection
                 login.Close();
             }
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService();
+            realPropertyTaxProjectionManager.ExportBuildingDataAssessorFile(null);
+        }
     }
 }

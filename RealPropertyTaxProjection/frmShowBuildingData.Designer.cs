@@ -37,7 +37,11 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnResetFilter = new System.Windows.Forms.Button();
+            this.btnExportData = new System.Windows.Forms.Button();
+            this.btnApplyFilter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnImportData = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,25 +53,21 @@
             this.label12 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnImportData = new System.Windows.Forms.Button();
-            this.btnResetFilter = new System.Windows.Forms.Button();
-            this.btnApplyFilter = new System.Windows.Forms.Button();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.ComputeSelected = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnComputeAll = new System.Windows.Forms.Button();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.btnExportData = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgBuildingData)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -161,6 +161,33 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected Building Data";
             // 
+            // btnResetFilter
+            // 
+            this.btnResetFilter.Location = new System.Drawing.Point(469, 95);
+            this.btnResetFilter.Name = "btnResetFilter";
+            this.btnResetFilter.Size = new System.Drawing.Size(79, 23);
+            this.btnResetFilter.TabIndex = 11;
+            this.btnResetFilter.Text = "Reset Filter";
+            this.btnResetFilter.UseVisualStyleBackColor = true;
+            // 
+            // btnExportData
+            // 
+            this.btnExportData.Location = new System.Drawing.Point(469, 43);
+            this.btnExportData.Name = "btnExportData";
+            this.btnExportData.Size = new System.Drawing.Size(79, 23);
+            this.btnExportData.TabIndex = 12;
+            this.btnExportData.Text = "Export Data";
+            this.btnExportData.UseVisualStyleBackColor = true;
+            // 
+            // btnApplyFilter
+            // 
+            this.btnApplyFilter.Location = new System.Drawing.Point(469, 69);
+            this.btnApplyFilter.Name = "btnApplyFilter";
+            this.btnApplyFilter.Size = new System.Drawing.Size(79, 23);
+            this.btnApplyFilter.TabIndex = 10;
+            this.btnApplyFilter.Text = "Apply Filter";
+            this.btnApplyFilter.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -169,6 +196,16 @@
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 9;
             this.label1.Text = "Owner";
+            // 
+            // btnImportData
+            // 
+            this.btnImportData.Location = new System.Drawing.Point(469, 17);
+            this.btnImportData.Name = "btnImportData";
+            this.btnImportData.Size = new System.Drawing.Size(79, 23);
+            this.btnImportData.TabIndex = 11;
+            this.btnImportData.Text = "Import Data";
+            this.btnImportData.UseVisualStyleBackColor = true;
+            this.btnImportData.Click += new System.EventHandler(this.btnImportData_Click);
             // 
             // label2
             // 
@@ -283,12 +320,28 @@
             this.label13.TabIndex = 18;
             this.label13.Text = "Market Value";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(475, 48);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(62, 13);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Unit Value :";
+            // 
             // textBox12
             // 
             this.textBox12.Location = new System.Drawing.Point(133, 45);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(100, 20);
             this.textBox12.TabIndex = 17;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(621, 45);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(143, 20);
+            this.textBox10.TabIndex = 7;
             // 
             // label10
             // 
@@ -299,95 +352,6 @@
             this.label10.TabIndex = 16;
             this.label10.Text = "Unit Value";
             // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(363, 19);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 15;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 22);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Building Type";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(133, 19);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 13;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnLogout);
-            this.groupBox3.Controls.Add(this.btnSettings);
-            this.groupBox3.Location = new System.Drawing.Point(571, 7);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(325, 126);
-            this.groupBox3.TabIndex = 10;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "What to do?";
-            // 
-            // btnImportData
-            // 
-            this.btnImportData.Location = new System.Drawing.Point(469, 17);
-            this.btnImportData.Name = "btnImportData";
-            this.btnImportData.Size = new System.Drawing.Size(79, 23);
-            this.btnImportData.TabIndex = 11;
-            this.btnImportData.Text = "Import Data";
-            this.btnImportData.UseVisualStyleBackColor = true;
-            this.btnImportData.Click += new System.EventHandler(this.btnImportData_Click);
-            // 
-            // btnResetFilter
-            // 
-            this.btnResetFilter.Location = new System.Drawing.Point(469, 95);
-            this.btnResetFilter.Name = "btnResetFilter";
-            this.btnResetFilter.Size = new System.Drawing.Size(79, 23);
-            this.btnResetFilter.TabIndex = 11;
-            this.btnResetFilter.Text = "Reset Filter";
-            this.btnResetFilter.UseVisualStyleBackColor = true;
-            // 
-            // btnApplyFilter
-            // 
-            this.btnApplyFilter.Location = new System.Drawing.Point(469, 69);
-            this.btnApplyFilter.Name = "btnApplyFilter";
-            this.btnApplyFilter.Size = new System.Drawing.Size(79, 23);
-            this.btnApplyFilter.TabIndex = 10;
-            this.btnApplyFilter.Text = "Apply Filter";
-            this.btnApplyFilter.UseVisualStyleBackColor = true;
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSettings.Location = new System.Drawing.Point(266, 95);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(53, 23);
-            this.btnSettings.TabIndex = 9;
-            this.btnSettings.Text = "Settings";
-            this.btnSettings.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(475, 48);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(62, 13);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Unit Value :";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(621, 45);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(143, 20);
-            this.textBox10.TabIndex = 7;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -396,6 +360,13 @@
             this.label9.Size = new System.Drawing.Size(108, 13);
             this.label9.TabIndex = 6;
             this.label9.Text = "Tax Rate % Defined :";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(363, 19);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 20);
+            this.textBox9.TabIndex = 15;
             // 
             // label8
             // 
@@ -415,6 +386,15 @@
             this.ComputeSelected.Text = "Compute Selected";
             this.ComputeSelected.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Building Type";
+            // 
             // btnComputeAll
             // 
             this.btnComputeAll.Location = new System.Drawing.Point(770, 17);
@@ -424,6 +404,13 @@
             this.btnComputeAll.Text = "Compute All";
             this.btnComputeAll.UseVisualStyleBackColor = true;
             // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(133, 19);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(100, 20);
+            this.textBox7.TabIndex = 13;
+            // 
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(621, 71);
@@ -431,14 +418,16 @@
             this.textBox8.Size = new System.Drawing.Size(143, 20);
             this.textBox8.TabIndex = 2;
             // 
-            // btnExportData
+            // groupBox3
             // 
-            this.btnExportData.Location = new System.Drawing.Point(469, 43);
-            this.btnExportData.Name = "btnExportData";
-            this.btnExportData.Size = new System.Drawing.Size(79, 23);
-            this.btnExportData.TabIndex = 12;
-            this.btnExportData.Text = "Export Data";
-            this.btnExportData.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.btnLogout);
+            this.groupBox3.Controls.Add(this.btnSettings);
+            this.groupBox3.Location = new System.Drawing.Point(571, 7);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(325, 126);
+            this.groupBox3.TabIndex = 10;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "What to do?";
             // 
             // btnLogout
             // 
@@ -450,6 +439,18 @@
             this.btnLogout.TabIndex = 10;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSettings.Location = new System.Drawing.Point(266, 95);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(53, 23);
+            this.btnSettings.TabIndex = 9;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // frmShowBuildingData
             // 
