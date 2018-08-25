@@ -77,8 +77,10 @@
     <Compile Include="Intangic\RPTP\Domain\LoginResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\LogoutRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\LogoutResponse.cs" />
+    <Compile Include="Intangic\RPTP\Domain\Result.cs" />
     <Compile Include="Intangic\RPTP\Domain\SelectBuildingDataRecordRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\SelectBuildingDataRecordResponse.cs" />
+    <Compile Include="Intangic\RPTP\Enumerations.cs" />
     <Compile Include="Intangic\RPTP\Factory\BusinessDelegateFactory.cs" />
     <Compile Include="Intangic\Utils\ConfigurationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

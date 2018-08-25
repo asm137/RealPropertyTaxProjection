@@ -11,6 +11,7 @@ namespace Intangic.RPTP.Domain
         public bool IsLoginValid { get; set; }
         public bool IsAdmin { get; set; }
         public int AccessLevel { get; set; }
+        public Result Result { get; set; }
 
         public LoginResponse()
         {
