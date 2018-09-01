@@ -19,12 +19,13 @@ namespace RealPropertyTaxProjection
 {
     public partial class frmShowBuildingData : Form
     {
-        IRealPropertyTaxProjectionService realPropertyTaxProjectionManager;
+        private List<BuildingDataAssessor> DataSource;
 
         public frmShowBuildingData()
         {
             InitializeComponent();
-            realPropertyTaxProjectionManager = null;
+            Program.realPropertyTaxProjectionManager = null;
+            this.DataSource = null;
         }
 
         private void dtgBuildingData_SelectionChanged(object sender, EventArgs e)
@@ -50,8 +51,39 @@ namespace RealPropertyTaxProjection
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService();
-            realPropertyTaxProjectionManager.ExportBuildingDataAssessorFile(null);
+            
+        }
+
+        private void btnExportData_Click(object sender, EventArgs e)
+        {
+            ExportBuildingDataAssessorFileRequest request = null;
+            ExportBuildingDataAssessorFileResponse response = null;
+
+            
+
+            try {
+                if (!(sfdExportData.ShowDialog() == DialogResult.OK)) {
+                    throw new RealPropertyTaxProjectionException(Program.SKIP_KEYWORD);
+                }
+
+                request = new ExportBuildingDataAssessorFileRequest() {
+                    SourceFilePath = this.sfdExportData.FileName, 
+                    BuildingDataAssessors = this.DataSource };
+
+                Program.realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService();
+                response = Program.realPropertyTaxProjectionManager.ExportBuildingDataAssessorFile(request);
+                if (response.Result.IsSuccess == true) {
+                    FormHelper.MessageShow(response.Result.Message);
+                }
+            }
+            catch (RealPropertyTaxProjectionException ex) {
+                if (!ex.Message.Equals(Program.SKIP_KEYWORD)) {
+                    FormHelper.MessageShow(ex.Message);
+                }    
+            }
+            finally {
+                Program.realPropertyTaxProjectionManager = null;
+            }           
         }
     }
 }

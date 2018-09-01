@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.IO;
+
 using Excel = NetOffice.ExcelApi;
 using System.Data.SQLite;
 
@@ -136,36 +138,64 @@ namespace Intangic.RPTP.Business.Impl
 
         public ExportBuildingDataAssessorFileResponse ExportBuildingDataAssessorFile(ExportBuildingDataAssessorFileRequest request) {
             ExportBuildingDataAssessorFileResponse response = null;
+            Excel.Application excelApplication = null;
 
             try {
                 response = new ExportBuildingDataAssessorFileResponse();
-
-                Excel.Application excelApplication = null;
-
+                
+                //write to excel
                 using (excelApplication = new Excel.Application()) {
                     excelApplication.DisplayAlerts = false;
-                    Excel.Workbook workBook = excelApplication.Workbooks.Add(); //new Excel.Workbook(asd[0].Id.ToString());
+                    Excel.Workbook workBook = excelApplication.Workbooks.Add(); 
                     Excel.Worksheet workSheet = (Excel.Worksheet)workBook.Sheets[1];
 
-                    workSheet.Name = "test sheet";
-                    workSheet.Cells[1, 1].Value = "hello 33";
-                    workSheet.Cells[1, 2].Value = "world";
+                    workSheet.Name = string.Format("{0} {1}","BldgData Assessor", DateTime.Now.ToString("yyyyMMdd"));
 
-                    //workBook.Sheets.Add(workSheet);
-                    //excelApplication.Workbooks.Add(workBook);
-                    workBook.SaveAs("C:\\games\\test.xlsx");
+                    int counter = 0;
+                    foreach (BuildingDataAssessor buildingDataAssessor in request.BuildingDataAssessors) {
+                        counter++;
+                        if (counter.Equals(1)) {
+                            //add headers
+                            continue;
+                        }
 
-                    //workBook.DisposeChildInstances();
-                    //workBook = null;
+                        //TODO: add column fields from incoming file
+                        //add details
+                        workSheet.Cells[counter, 1].Value = "hello 33";
+                        workSheet.Cells[counter, 2].Value = "world";
+                    }
+                    
+                    //save excel
+                    workBook.SaveAs(request.SourceFilePath);
+
+                    //quit excel
                     excelApplication.Quit();
-                    excelApplication.Dispose();
-                    excelApplication = null;
                 }
 
-                    return response;
+                //set result
+                if (File.Exists(request.SourceFilePath)) {
+                    response.Result = new Result() {
+                        IsSuccess = true,
+                        Message = string.Format("{0}\n{1}", 
+                            "The data is exported successfully at the following path:",
+                            request.SourceFilePath) };
+                }
+                else {
+                    response.Result = new Result() {
+                        IsSuccess = false,
+                        Message = string.Format("{0}\n{1}", 
+                            "Fail in exporting data to:",
+                            request.SourceFilePath) };
+                }
+
+                return response;
             }
             finally {
                 response = null;
+
+                if (excelApplication != null)
+                    excelApplication.Dispose();
+                excelApplication = null;
             }
         }
     }

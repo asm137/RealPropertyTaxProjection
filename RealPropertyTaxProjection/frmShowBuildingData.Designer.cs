@@ -68,6 +68,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
+            this.sfdExportData = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dtgBuildingData)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -178,6 +179,7 @@
             this.btnExportData.TabIndex = 12;
             this.btnExportData.Text = "Export Data";
             this.btnExportData.UseVisualStyleBackColor = true;
+            this.btnExportData.Click += new System.EventHandler(this.btnExportData_Click);
             // 
             // btnApplyFilter
             // 
@@ -517,5 +519,6 @@
         private System.Windows.Forms.Button btnImportData;
         private System.Windows.Forms.Button btnExportData;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.SaveFileDialog sfdExportData;
     }
 }

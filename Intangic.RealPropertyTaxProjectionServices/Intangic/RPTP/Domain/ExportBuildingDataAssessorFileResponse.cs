@@ -8,5 +8,11 @@ namespace Intangic.RPTP.Domain
 {
     public class ExportBuildingDataAssessorFileResponse
     {
+        public Result Result { get; set; }
+
+        public ExportBuildingDataAssessorFileResponse()
+        {
+            this.Result = null;
+        }
     }
 }
