@@ -19,6 +19,7 @@ namespace RealPropertyTaxProjection
 {
     public partial class frmShowBuildingData : Form
     {
+        
         private List<BuildingDataAssessor> DataSource;
 
         public frmShowBuildingData()
@@ -36,8 +37,11 @@ namespace RealPropertyTaxProjection
         private void btnImportData_Click(object sender, EventArgs e)
         {
             using (var newForm = new frmImportFile()) {
-                this.Hide();
+                //this.Hide();
                 newForm.Show();
+                //if (newForm.ShowDialog() == DialogResult.OK) {
+                //    newForm.Dispose();
+                //}
             }
         }
 

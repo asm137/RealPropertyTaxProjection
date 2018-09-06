@@ -8,5 +8,11 @@ namespace Intangic.RPTP.Domain
 {
     public class ImportBuildingDataFileResponse
     {
+        public Result Result { get; set; }
+
+        public ImportBuildingDataFileResponse()
+        {
+            this.Result = null;
+        }
     }
 }

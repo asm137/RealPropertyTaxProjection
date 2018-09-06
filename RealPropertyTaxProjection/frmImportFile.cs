@@ -47,7 +47,12 @@ namespace RealPropertyTaxProjection
                 realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService();
                 response = realPropertyTaxProjectionManager.ImportBuildingDataFile(request);
 
-                response = null;
+                if (response.Result.IsSuccess == true) {
+                    this.DialogResult = DialogResult.OK;
+                }
+                else {
+                    this.DialogResult = DialogResult.Cancel;
+                }
             }
             catch (Exception ex) {
                 FormHelper.MessageShow(ex.Message);
