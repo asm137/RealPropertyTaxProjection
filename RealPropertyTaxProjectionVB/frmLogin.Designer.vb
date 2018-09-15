@@ -80,7 +80,11 @@ Partial Class frmLogin
         Me.Controls.Add(Me.login)
         Me.Controls.Add(Me.password)
         Me.Controls.Add(Me.userName)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmLogin"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmLogin"
         Me.ResumeLayout(False)
         Me.PerformLayout()

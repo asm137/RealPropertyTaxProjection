@@ -67,4 +67,7 @@ Public Class frmShowBuildingData
         End Try
     End Sub
 
+    Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
+        End
+    End Sub
 End Class
