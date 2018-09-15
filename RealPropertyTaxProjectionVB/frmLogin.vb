@@ -20,7 +20,7 @@ Imports FormUtils = RealPropertyTaxProjectionVB.Intangic.Utils
 
 Public Class frmLogin
 
-    Public realPropertyTaxProjectionManage As IRealPropertyTaxProjectionService
+    Public realPropertyTaxProjectionManager As IRealPropertyTaxProjectionService
 
     Private Sub login_Click(sender As Object, e As EventArgs) Handles login.Click
         Dim request As LoginRequest = Nothing
@@ -35,12 +35,13 @@ Public Class frmLogin
 
 
         Try
-            realPropertyTaxProjectionManage = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService()
+            realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService()
 
             response = New LoginResponse()
-            response = realPropertyTaxProjectionManage.Login(request)
+            response = realPropertyTaxProjectionManager.Login(request)
             If response.IsLoginValid Then
-                Me.DialogResult = DialogResult.OK
+                Me.Hide()
+                frmShowBuildingData.Show()
             End If
 
         Catch ex As RealPropertyTaxProjectionException
@@ -52,7 +53,7 @@ Public Class frmLogin
             Me.userName.Focus()
 
         Finally
-            realPropertyTaxProjectionManage = Nothing
+            realPropertyTaxProjectionManager = Nothing
             response = Nothing
             request = Nothing
         End Try
