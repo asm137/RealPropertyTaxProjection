@@ -23,7 +23,34 @@ Public Class frmShowBuildingData
     Private DataSource As List(Of BuildingDataAssessor) = Nothing
 
     Private Sub btnImportData_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnImportData.Click
-        frmImportFile.ShowDialog()
+        Try
+            If frmImportFile.ShowDialog().Equals(DialogResult.OK) Then
+                Program.realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService()
+                response = Program.realPropertyTaxProjectionManager.LoadBuildingDataAssessorFile(request)
+
+                If response.Result.IsSuccess.Equals(True) Then
+                    'load data from database
+                    Me.dtgBuildingData.DataSource = response.DataSource
+
+                    'display status "Data loaded at yyyyMMdd"
+                    Me.lblStatus.Text = String.Format("{0} {1}", "Data loaded at", Now)
+                End If
+            End If
+
+        Catch ex As RealPropertyTaxProjectionException
+            If Not ex.Message.Equals(Program.SKIP_KEYWORD) Then
+                FormUtils.FormHelper.MessageShow(ex.Message)
+            End If
+
+        Catch ex As Exception
+            If Not ex.Message.Equals(Program.SKIP_KEYWORD) Then
+                FormUtils.FormHelper.MessageShow(ex.Message)
+            End If
+
+        Finally
+            Program.realPropertyTaxProjectionManager = Nothing
+        End Try
+
     End Sub
 
 
@@ -35,13 +62,10 @@ Public Class frmShowBuildingData
         Dim request As ExportBuildingDataAssessorFileRequest = Nothing
         Dim response As ExportBuildingDataAssessorFileResponse = Nothing
 
-
-
         Try
             If Not sfdExportData.ShowDialog().Equals(DialogResult.OK) Then
                 Throw New RealPropertyTaxProjectionException(Program.SKIP_KEYWORD)
             End If
-
 
 
             request = New ExportBuildingDataAssessorFileRequest()
@@ -70,4 +94,5 @@ Public Class frmShowBuildingData
     Private Sub btnLogout_Click(sender As Object, e As EventArgs) Handles btnLogout.Click
         End
     End Sub
+
 End Class

@@ -63,6 +63,7 @@ Partial Class frmShowBuildingData
         Me.textBox4 = New System.Windows.Forms.TextBox()
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
         Me.textBox3 = New System.Windows.Forms.TextBox()
+        Me.lblStatus = New System.Windows.Forms.Label()
         Me.groupBox3.SuspendLayout()
         Me.groupBox2.SuspendLayout()
         CType(Me.dtgBuildingData, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -444,11 +445,21 @@ Partial Class frmShowBuildingData
         Me.textBox3.Size = New System.Drawing.Size(100, 20)
         Me.textBox3.TabIndex = 4
         '
+        'lblStatus
+        '
+        Me.lblStatus.AutoSize = True
+        Me.lblStatus.Location = New System.Drawing.Point(9, 368)
+        Me.lblStatus.Name = "lblStatus"
+        Me.lblStatus.Size = New System.Drawing.Size(45, 13)
+        Me.lblStatus.TabIndex = 15
+        Me.lblStatus.Text = "Label15"
+        '
         'frmShowBuildingData
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(908, 390)
+        Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.groupBox3)
         Me.Controls.Add(Me.groupBox2)
         Me.Controls.Add(Me.dtgBuildingData)
@@ -462,6 +473,7 @@ Partial Class frmShowBuildingData
         Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -506,4 +518,5 @@ Partial Class frmShowBuildingData
     Private WithEvents textBox4 As TextBox
     Private WithEvents groupBox1 As GroupBox
     Private WithEvents textBox3 As TextBox
+    Friend WithEvents lblStatus As Label
 End Class
