@@ -75,6 +75,8 @@
     <Compile Include="Intangic\RPTP\Domain\ImportBuildingDataFileDAOResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\ImportBuildingDataFileRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\ImportBuildingDataFileResponse.cs" />
+    <Compile Include="Intangic\RPTP\Domain\LoadBuildingDataAssessorFileRequest.cs" />
+    <Compile Include="Intangic\RPTP\Domain\LoadBuildingDataAssessorFileResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\LoginRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\LoginResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\LogoutRequest.cs" />

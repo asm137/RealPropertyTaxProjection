@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.IO;
+using System.Data;
 
 using Excel = NetOffice.ExcelApi;
 using System.Data.SQLite;
@@ -16,6 +17,27 @@ namespace Intangic.RPTP.Business.Impl
 {
     public class RealPropertyTaxProjectionManager : IRealPropertyTaxProjectionService
     {
+
+        public LoadBuildingDataAssessorFileResponse LoadBuildingDataAssessorFile(LoadBuildingDataAssessorFileRequest request) {
+            LoadBuildingDataAssessorFileResponse response = null;
+
+            try {
+                response = new LoadBuildingDataAssessorFileResponse();
+                if (File.Exists(request.SourceFilePath)) {
+                    DataTable dt = new DataTable();
+                    dt.TableName = Path.GetFileNameWithoutExtension(request.SourceFilePath);
+                    dt.ReadXml(request.SourceFilePath);
+
+                    response.DataSource = new DataSet();
+                    response.DataSource.Tables.Add(dt);
+                }
+
+                return response;
+            }
+            finally {
+                response = null;
+            }
+        }
         public ComputeEquivalentTaxResponse ComputeEquivalentTax(ComputeEquivalentTaxRequest request) {
             ComputeEquivalentTaxResponse response = null;
 
@@ -42,7 +64,7 @@ namespace Intangic.RPTP.Business.Impl
             try {
                 response = new ImportBuildingDataFileResponse();
 
-                //read file from excel, using NPOI
+                //read file from excel, using NetOffice
                 Excel.Application excelApplication = null;
 
                 
@@ -54,21 +76,21 @@ namespace Intangic.RPTP.Business.Impl
                     int rowCount = excelRange.Rows.Count;
                     int colCount = excelRange.Columns.Count;
 
-                    System.Data.SQLite.SQLiteConnection cn = new SQLiteConnection(@"Data Source=C:\sqlite\test.db;Version=3;New=True;Compress=True;");
-                    SQLiteCommand sqlite_cmd;
-                    SQLiteDataReader sqlite_datareader;
+                    //System.Data.SQLite.SQLiteConnection cn = new SQLiteConnection(@"Data Source=C:\sqlite\test.db;Version=3;New=True;Compress=True;");
+                    //SQLiteCommand sqlite_cmd;
+                    //SQLiteDataReader sqlite_datareader;
 
-                    // open the connection:
-                    cn.Open();
+                    //// open the connection:
+                    //cn.Open();
 
-                    // create a new SQL command:
-                    sqlite_cmd = cn.CreateCommand();
+                    //// create a new SQL command:
+                    //sqlite_cmd = cn.CreateCommand();
 
-                    // Let the SQLiteCommand object know our SQL-Query:
-                    sqlite_cmd.CommandText = "CREATE TABLE hello (id integer primary key, text varchar(100));";
+                    //// Let the SQLiteCommand object know our SQL-Query:
+                    //sqlite_cmd.CommandText = "CREATE TABLE hello (id integer primary key, text varchar(100));";
 
-                    // Now lets execute the SQL ;D
-                    sqlite_cmd.ExecuteNonQuery();
+                    //// Now lets execute the SQL ;D
+                    //sqlite_cmd.ExecuteNonQuery();
 
 
                     for (int i = 1; i <= rowCount; i++) {
@@ -77,16 +99,18 @@ namespace Intangic.RPTP.Business.Impl
 
                         }
 
-                        // Lets insert something into our new table:
-                        sqlite_cmd.CommandText = "INSERT INTO test (id, text) VALUES (1, 'Test Text 1');";                  
+                    //    // Lets insert something into our new table:
+                    //    sqlite_cmd.CommandText = "INSERT INTO test (id, text) VALUES (1, 'Test Text 1');";                  
 
-                        // And execute this again ;D
-                        sqlite_cmd.ExecuteNonQuery();
+                    //    // And execute this again ;D
+                    //    sqlite_cmd.ExecuteNonQuery();
                     }
 
 
-                    // We are ready, now lets cleanup and close our connection:
-                    cn.Close();
+                    //// We are ready, now lets cleanup and close our connection:
+                    //cn.Close();
+
+
 
                     workBook.DisposeChildInstances();
                     workBook = null;
@@ -95,9 +119,9 @@ namespace Intangic.RPTP.Business.Impl
                     //excelApplication = null;
                 }
 
-                    //save to database
+                //save to database
 
-                    return response;
+                return response;
             }
             finally {
                 response = null;

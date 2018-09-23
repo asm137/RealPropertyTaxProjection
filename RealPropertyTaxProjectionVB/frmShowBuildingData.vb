@@ -22,19 +22,35 @@ Public Class frmShowBuildingData
 
     Private DataSource As List(Of BuildingDataAssessor) = Nothing
 
+    Private Sub LoadData(ByVal sourceFilePath As String)
+        Dim request As LoadBuildingDataAssessorFileRequest = Nothing
+        Dim response As LoadBuildingDataAssessorFileResponse = Nothing
+
+        request = New LoadBuildingDataAssessorFileRequest
+        With request
+            .SourceFilePath = sourceFilePath
+        End With
+
+        Program.realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService()
+        response = Program.realPropertyTaxProjectionManager.LoadBuildingDataAssessorFile(request)
+
+        If response.Result.IsSuccess.Equals(True) Then
+            'load data from database
+            Me.dtgBuildingData.DataSource = response.DataSource
+
+            'display status "Data loaded at yyyyMMdd"
+            Me.lblStatus.Text = String.Format("{0} {1}", "Data loaded at", Now)
+        End If
+    End Sub
+
+
     Private Sub btnImportData_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnImportData.Click
+        Dim request As LoadBuildingDataAssessorFileRequest = Nothing
+        Dim response As LoadBuildingDataAssessorFileResponse = Nothing
+
         Try
             If frmImportFile.ShowDialog().Equals(DialogResult.OK) Then
-                Program.realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService()
-                response = Program.realPropertyTaxProjectionManager.LoadBuildingDataAssessorFile(request)
-
-                If response.Result.IsSuccess.Equals(True) Then
-                    'load data from database
-                    Me.dtgBuildingData.DataSource = response.DataSource
-
-                    'display status "Data loaded at yyyyMMdd"
-                    Me.lblStatus.Text = String.Format("{0} {1}", "Data loaded at", Now)
-                End If
+                Me.LoadData(frmImportFile.SourceFilePath)
             End If
 
         Catch ex As RealPropertyTaxProjectionException
@@ -55,7 +71,7 @@ Public Class frmShowBuildingData
 
 
     Private Sub frmShowBuildingData_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
-
+        Me.LoadData(frmImportFile.SourceFilePath)
     End Sub
 
     Private Sub btnExportData_Click(sender As Object, e As EventArgs) Handles btnExportData.Click

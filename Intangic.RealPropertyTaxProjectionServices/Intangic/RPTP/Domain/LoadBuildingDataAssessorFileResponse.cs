@@ -7,14 +7,15 @@ using System.Data;
 
 namespace Intangic.RPTP.Domain
 {
-    public class ImportBuildingDataFileResponse
+    public class LoadBuildingDataAssessorFileResponse
     {
-        public DataSet DataSource { get; set; }
         public Result Result { get; set; }
+        public DataSet DataSource { get; set; }
 
-        public ImportBuildingDataFileResponse()
+        public LoadBuildingDataAssessorFileResponse()
         {
-            this.Result = null;
+            this.Result = new Result();
+            this.DataSource = null;
         }
     }
 }

@@ -10,6 +10,8 @@ namespace Intangic.RPTP.Business.Interfaces
 {
     public interface IRealPropertyTaxProjectionService
     {
+        LoadBuildingDataAssessorFileResponse LoadBuildingDataAssessorFile(LoadBuildingDataAssessorFileRequest request);
+
         LoginResponse Login(LoginRequest request);
 
         ImportBuildingDataFileResponse ImportBuildingDataFile(ImportBuildingDataFileRequest request);

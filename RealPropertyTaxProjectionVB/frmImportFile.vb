@@ -14,10 +14,23 @@ Public Class frmImportFile
 
     Public realPropertyTaxProjectionManager As IRealPropertyTaxProjectionService
 
+    Private _SourceFilePath As String
+    Public Property SourceFilePath As String
+        Get
+            Return _SourceFilePath
+        End Get
+        Private Set(value As String)
+            _SourceFilePath = value
+            Me.txtSourceFilePath.Text = _SourceFilePath
+        End Set
+    End Property
+
+
+
     Private Sub btnSelectImportFile_Click(sender As Object, e As EventArgs) Handles btnSelectImportFile.Click
         'openFileDialog1
         If openFileDialog1.ShowDialog().Equals(DialogResult.OK) Then
-            Me.txtSourceFilePath.Text = openFileDialog1.FileName
+            Me.SourceFilePath = openFileDialog1.FileName
         End If
     End Sub
 
