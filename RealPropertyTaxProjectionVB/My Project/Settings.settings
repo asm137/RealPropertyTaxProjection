@@ -5,5 +5,8 @@
     <Setting Name="DATA_TEMP_SOURCE" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Apps\RealPropertyTaxProjection\TempDataSource\Source.xml</Value>
     </Setting>
+    <Setting Name="PARAM_TAX_RATE_PERCENT" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2.5</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

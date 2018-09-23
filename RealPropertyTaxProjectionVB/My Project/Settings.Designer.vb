@@ -65,6 +65,18 @@ Namespace My
                 Me("DATA_TEMP_SOURCE") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("2.5")>  _
+        Public Property PARAM_TAX_RATE_PERCENT() As String
+            Get
+                Return CType(Me("PARAM_TAX_RATE_PERCENT"),String)
+            End Get
+            Set
+                Me("PARAM_TAX_RATE_PERCENT") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

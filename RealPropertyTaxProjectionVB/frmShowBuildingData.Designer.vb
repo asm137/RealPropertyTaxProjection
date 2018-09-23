@@ -25,6 +25,9 @@ Partial Class frmShowBuildingData
         Me.sfdExportData = New System.Windows.Forms.SaveFileDialog()
         Me.btnLogout = New System.Windows.Forms.Button()
         Me.groupBox3 = New System.Windows.Forms.GroupBox()
+        Me.txtSearchText = New System.Windows.Forms.TextBox()
+        Me.btnResetFilter = New System.Windows.Forms.Button()
+        Me.btnApplyFilter = New System.Windows.Forms.Button()
         Me.btnSettings = New System.Windows.Forms.Button()
         Me.groupBox2 = New System.Windows.Forms.GroupBox()
         Me.label14 = New System.Windows.Forms.Label()
@@ -43,7 +46,7 @@ Partial Class frmShowBuildingData
         Me.label7 = New System.Windows.Forms.Label()
         Me.btnComputeAll = New System.Windows.Forms.Button()
         Me.textBox7 = New System.Windows.Forms.TextBox()
-        Me.textBox8 = New System.Windows.Forms.TextBox()
+        Me.txtTaxRatePercent = New System.Windows.Forms.TextBox()
         Me.comboBox1 = New System.Windows.Forms.ComboBox()
         Me.label1 = New System.Windows.Forms.Label()
         Me.btnImportData = New System.Windows.Forms.Button()
@@ -53,9 +56,7 @@ Partial Class frmShowBuildingData
         Me.label5 = New System.Windows.Forms.Label()
         Me.label6 = New System.Windows.Forms.Label()
         Me.dtgBuildingData = New System.Windows.Forms.DataGridView()
-        Me.btnApplyFilter = New System.Windows.Forms.Button()
         Me.textBox1 = New System.Windows.Forms.TextBox()
-        Me.btnResetFilter = New System.Windows.Forms.Button()
         Me.btnExportData = New System.Windows.Forms.Button()
         Me.textBox2 = New System.Windows.Forms.TextBox()
         Me.textBox6 = New System.Windows.Forms.TextBox()
@@ -72,33 +73,56 @@ Partial Class frmShowBuildingData
         '
         'btnLogout
         '
-        Me.btnLogout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnLogout.Location = New System.Drawing.Point(265, 17)
+        Me.btnLogout.Location = New System.Drawing.Point(903, 357)
         Me.btnLogout.Name = "btnLogout"
-        Me.btnLogout.Size = New System.Drawing.Size(53, 23)
+        Me.btnLogout.Size = New System.Drawing.Size(79, 24)
         Me.btnLogout.TabIndex = 10
         Me.btnLogout.Text = "Logout"
         Me.btnLogout.UseVisualStyleBackColor = True
         '
         'groupBox3
         '
-        Me.groupBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.groupBox3.Controls.Add(Me.btnLogout)
-        Me.groupBox3.Controls.Add(Me.btnSettings)
-        Me.groupBox3.Location = New System.Drawing.Point(571, 12)
+        Me.groupBox3.Controls.Add(Me.txtSearchText)
+        Me.groupBox3.Controls.Add(Me.btnResetFilter)
+        Me.groupBox3.Controls.Add(Me.btnApplyFilter)
+        Me.groupBox3.Location = New System.Drawing.Point(496, 3)
         Me.groupBox3.Name = "groupBox3"
-        Me.groupBox3.Size = New System.Drawing.Size(324, 126)
+        Me.groupBox3.Size = New System.Drawing.Size(400, 126)
         Me.groupBox3.TabIndex = 14
         Me.groupBox3.TabStop = False
-        Me.groupBox3.Text = "What to do?"
+        Me.groupBox3.Text = "Search"
+        '
+        'txtSearchText
+        '
+        Me.txtSearchText.Location = New System.Drawing.Point(7, 19)
+        Me.txtSearchText.Multiline = True
+        Me.txtSearchText.Name = "txtSearchText"
+        Me.txtSearchText.Size = New System.Drawing.Size(387, 72)
+        Me.txtSearchText.TabIndex = 12
+        '
+        'btnResetFilter
+        '
+        Me.btnResetFilter.Location = New System.Drawing.Point(315, 95)
+        Me.btnResetFilter.Name = "btnResetFilter"
+        Me.btnResetFilter.Size = New System.Drawing.Size(79, 23)
+        Me.btnResetFilter.TabIndex = 11
+        Me.btnResetFilter.Text = "Reset Filter"
+        Me.btnResetFilter.UseVisualStyleBackColor = True
+        '
+        'btnApplyFilter
+        '
+        Me.btnApplyFilter.Location = New System.Drawing.Point(230, 95)
+        Me.btnApplyFilter.Name = "btnApplyFilter"
+        Me.btnApplyFilter.Size = New System.Drawing.Size(79, 23)
+        Me.btnApplyFilter.TabIndex = 10
+        Me.btnApplyFilter.Text = "Apply Filter"
+        Me.btnApplyFilter.UseVisualStyleBackColor = True
         '
         'btnSettings
         '
-        Me.btnSettings.Location = New System.Drawing.Point(6, 16)
+        Me.btnSettings.Location = New System.Drawing.Point(903, 106)
         Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(53, 23)
+        Me.btnSettings.Size = New System.Drawing.Size(79, 23)
         Me.btnSettings.TabIndex = 9
         Me.btnSettings.Text = "Settings"
         Me.btnSettings.UseVisualStyleBackColor = True
@@ -121,9 +145,9 @@ Partial Class frmShowBuildingData
         Me.groupBox2.Controls.Add(Me.label7)
         Me.groupBox2.Controls.Add(Me.btnComputeAll)
         Me.groupBox2.Controls.Add(Me.textBox7)
-        Me.groupBox2.Controls.Add(Me.textBox8)
+        Me.groupBox2.Controls.Add(Me.txtTaxRatePercent)
         Me.groupBox2.Controls.Add(Me.comboBox1)
-        Me.groupBox2.Location = New System.Drawing.Point(12, 144)
+        Me.groupBox2.Location = New System.Drawing.Point(12, 135)
         Me.groupBox2.Name = "groupBox2"
         Me.groupBox2.Size = New System.Drawing.Size(883, 101)
         Me.groupBox2.TabIndex = 13
@@ -165,7 +189,7 @@ Partial Class frmShowBuildingData
         'label13
         '
         Me.label13.AutoSize = True
-        Me.label13.Location = New System.Drawing.Point(9, 48)
+        Me.label13.Location = New System.Drawing.Point(239, 22)
         Me.label13.Name = "label13"
         Me.label13.Size = New System.Drawing.Size(70, 13)
         Me.label13.TabIndex = 18
@@ -176,9 +200,9 @@ Partial Class frmShowBuildingData
         Me.label11.AutoSize = True
         Me.label11.Location = New System.Drawing.Point(475, 48)
         Me.label11.Name = "label11"
-        Me.label11.Size = New System.Drawing.Size(62, 13)
+        Me.label11.Size = New System.Drawing.Size(111, 13)
         Me.label11.TabIndex = 8
-        Me.label11.Text = "Unit Value :"
+        Me.label11.Text = "Scructure Unit Value :"
         '
         'textBox12
         '
@@ -189,15 +213,17 @@ Partial Class frmShowBuildingData
         '
         'textBox10
         '
+        Me.textBox10.BackColor = System.Drawing.Color.White
         Me.textBox10.Location = New System.Drawing.Point(621, 45)
         Me.textBox10.Name = "textBox10"
+        Me.textBox10.ReadOnly = True
         Me.textBox10.Size = New System.Drawing.Size(143, 20)
         Me.textBox10.TabIndex = 7
         '
         'label10
         '
         Me.label10.AutoSize = True
-        Me.label10.Location = New System.Drawing.Point(239, 22)
+        Me.label10.Location = New System.Drawing.Point(9, 48)
         Me.label10.Name = "label10"
         Me.label10.Size = New System.Drawing.Size(56, 13)
         Me.label10.TabIndex = 16
@@ -224,9 +250,9 @@ Partial Class frmShowBuildingData
         Me.label8.AutoSize = True
         Me.label8.Location = New System.Drawing.Point(475, 22)
         Me.label8.Name = "label8"
-        Me.label8.Size = New System.Drawing.Size(128, 13)
+        Me.label8.Size = New System.Drawing.Size(137, 13)
         Me.label8.TabIndex = 5
-        Me.label8.Text = "Building Type - Assessor :"
+        Me.label8.Text = "Scructure Type - Assessor :"
         '
         'ComputeSelected
         '
@@ -262,12 +288,14 @@ Partial Class frmShowBuildingData
         Me.textBox7.Size = New System.Drawing.Size(100, 20)
         Me.textBox7.TabIndex = 13
         '
-        'textBox8
+        'txtTaxRatePercent
         '
-        Me.textBox8.Location = New System.Drawing.Point(621, 71)
-        Me.textBox8.Name = "textBox8"
-        Me.textBox8.Size = New System.Drawing.Size(143, 20)
-        Me.textBox8.TabIndex = 2
+        Me.txtTaxRatePercent.BackColor = System.Drawing.Color.White
+        Me.txtTaxRatePercent.Location = New System.Drawing.Point(621, 71)
+        Me.txtTaxRatePercent.Name = "txtTaxRatePercent"
+        Me.txtTaxRatePercent.ReadOnly = True
+        Me.txtTaxRatePercent.Size = New System.Drawing.Size(143, 20)
+        Me.txtTaxRatePercent.TabIndex = 2
         '
         'comboBox1
         '
@@ -288,7 +316,7 @@ Partial Class frmShowBuildingData
         '
         'btnImportData
         '
-        Me.btnImportData.Location = New System.Drawing.Point(469, 17)
+        Me.btnImportData.Location = New System.Drawing.Point(903, 12)
         Me.btnImportData.Name = "btnImportData"
         Me.btnImportData.Size = New System.Drawing.Size(79, 23)
         Me.btnImportData.TabIndex = 11
@@ -342,23 +370,13 @@ Partial Class frmShowBuildingData
         '
         'dtgBuildingData
         '
-        Me.dtgBuildingData.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtgBuildingData.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.dtgBuildingData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgBuildingData.Location = New System.Drawing.Point(12, 255)
+        Me.dtgBuildingData.Location = New System.Drawing.Point(12, 242)
         Me.dtgBuildingData.Name = "dtgBuildingData"
-        Me.dtgBuildingData.Size = New System.Drawing.Size(883, 104)
+        Me.dtgBuildingData.Size = New System.Drawing.Size(884, 139)
         Me.dtgBuildingData.TabIndex = 11
-        '
-        'btnApplyFilter
-        '
-        Me.btnApplyFilter.Location = New System.Drawing.Point(469, 69)
-        Me.btnApplyFilter.Name = "btnApplyFilter"
-        Me.btnApplyFilter.Size = New System.Drawing.Size(79, 23)
-        Me.btnApplyFilter.TabIndex = 10
-        Me.btnApplyFilter.Text = "Apply Filter"
-        Me.btnApplyFilter.UseVisualStyleBackColor = True
         '
         'textBox1
         '
@@ -367,18 +385,9 @@ Partial Class frmShowBuildingData
         Me.textBox1.Size = New System.Drawing.Size(363, 20)
         Me.textBox1.TabIndex = 2
         '
-        'btnResetFilter
-        '
-        Me.btnResetFilter.Location = New System.Drawing.Point(469, 95)
-        Me.btnResetFilter.Name = "btnResetFilter"
-        Me.btnResetFilter.Size = New System.Drawing.Size(79, 23)
-        Me.btnResetFilter.TabIndex = 11
-        Me.btnResetFilter.Text = "Reset Filter"
-        Me.btnResetFilter.UseVisualStyleBackColor = True
-        '
         'btnExportData
         '
-        Me.btnExportData.Location = New System.Drawing.Point(469, 43)
+        Me.btnExportData.Location = New System.Drawing.Point(903, 38)
         Me.btnExportData.Name = "btnExportData"
         Me.btnExportData.Size = New System.Drawing.Size(79, 23)
         Me.btnExportData.TabIndex = 12
@@ -415,11 +424,7 @@ Partial Class frmShowBuildingData
         '
         'groupBox1
         '
-        Me.groupBox1.Controls.Add(Me.btnResetFilter)
-        Me.groupBox1.Controls.Add(Me.btnExportData)
-        Me.groupBox1.Controls.Add(Me.btnApplyFilter)
         Me.groupBox1.Controls.Add(Me.label1)
-        Me.groupBox1.Controls.Add(Me.btnImportData)
         Me.groupBox1.Controls.Add(Me.label2)
         Me.groupBox1.Controls.Add(Me.label3)
         Me.groupBox1.Controls.Add(Me.label4)
@@ -431,9 +436,9 @@ Partial Class frmShowBuildingData
         Me.groupBox1.Controls.Add(Me.textBox3)
         Me.groupBox1.Controls.Add(Me.textBox5)
         Me.groupBox1.Controls.Add(Me.textBox2)
-        Me.groupBox1.Location = New System.Drawing.Point(12, 12)
+        Me.groupBox1.Location = New System.Drawing.Point(12, 3)
         Me.groupBox1.Name = "groupBox1"
-        Me.groupBox1.Size = New System.Drawing.Size(553, 126)
+        Me.groupBox1.Size = New System.Drawing.Size(477, 126)
         Me.groupBox1.TabIndex = 12
         Me.groupBox1.TabStop = False
         Me.groupBox1.Text = "Selected Building Data"
@@ -448,7 +453,7 @@ Partial Class frmShowBuildingData
         'lblStatus
         '
         Me.lblStatus.AutoSize = True
-        Me.lblStatus.Location = New System.Drawing.Point(9, 368)
+        Me.lblStatus.Location = New System.Drawing.Point(9, 390)
         Me.lblStatus.Name = "lblStatus"
         Me.lblStatus.Size = New System.Drawing.Size(45, 13)
         Me.lblStatus.TabIndex = 15
@@ -458,15 +463,20 @@ Partial Class frmShowBuildingData
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(908, 390)
+        Me.ClientSize = New System.Drawing.Size(994, 412)
+        Me.Controls.Add(Me.btnLogout)
+        Me.Controls.Add(Me.btnSettings)
         Me.Controls.Add(Me.lblStatus)
+        Me.Controls.Add(Me.btnExportData)
         Me.Controls.Add(Me.groupBox3)
         Me.Controls.Add(Me.groupBox2)
         Me.Controls.Add(Me.dtgBuildingData)
+        Me.Controls.Add(Me.btnImportData)
         Me.Controls.Add(Me.groupBox1)
         Me.Name = "frmShowBuildingData"
         Me.Text = "frmShowBuildingData"
         Me.groupBox3.ResumeLayout(False)
+        Me.groupBox3.PerformLayout()
         Me.groupBox2.ResumeLayout(False)
         Me.groupBox2.PerformLayout()
         CType(Me.dtgBuildingData, System.ComponentModel.ISupportInitialize).EndInit()
@@ -498,7 +508,7 @@ Partial Class frmShowBuildingData
     Private WithEvents label7 As Label
     Private WithEvents btnComputeAll As Button
     Private WithEvents textBox7 As TextBox
-    Private WithEvents textBox8 As TextBox
+    Private WithEvents txtTaxRatePercent As TextBox
     Private WithEvents comboBox1 As ComboBox
     Private WithEvents label1 As Label
     Private WithEvents btnImportData As Button
@@ -519,4 +529,5 @@ Partial Class frmShowBuildingData
     Private WithEvents groupBox1 As GroupBox
     Private WithEvents textBox3 As TextBox
     Friend WithEvents lblStatus As Label
+    Friend WithEvents txtSearchText As TextBox
 End Class

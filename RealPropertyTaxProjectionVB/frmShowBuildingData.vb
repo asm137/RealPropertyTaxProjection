@@ -71,6 +71,7 @@ Public Class frmShowBuildingData
 
     Private Sub frmShowBuildingData_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Me.LoadData(frmImportFile.SourceFilePath)
+        txtTaxRatePercent.Text = FormUtils.ConfigurationHelper.GetString("PARAM_TAX_RATE_PERCENT")
     End Sub
 
     Private Sub btnExportData_Click(sender As Object, e As EventArgs) Handles btnExportData.Click
@@ -110,4 +111,15 @@ Public Class frmShowBuildingData
         End
     End Sub
 
+    Private Sub btnApplyFilter_Click(sender As Object, e As EventArgs) Handles btnApplyFilter.Click
+
+    End Sub
+
+    Private Sub btnResetFilter_Click(sender As Object, e As EventArgs) Handles btnResetFilter.Click
+        Me.txtSearchText.Text = String.Empty
+    End Sub
+
+    Private Sub frmShowBuildingData_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        End
+    End Sub
 End Class
