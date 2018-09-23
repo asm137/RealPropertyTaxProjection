@@ -60,6 +60,7 @@ namespace Intangic.RPTP.Business.Impl
 
         public ImportBuildingDataFileResponse ImportBuildingDataFile(ImportBuildingDataFileRequest request) {
             ImportBuildingDataFileResponse response = null;
+            DataSet ds = null;
 
             try {
                 response = new ImportBuildingDataFileResponse();
@@ -92,12 +93,51 @@ namespace Intangic.RPTP.Business.Impl
                     //// Now lets execute the SQL ;D
                     //sqlite_cmd.ExecuteNonQuery();
 
+                    ds = new DataSet();
+                    ds.Tables.Add("Source");
+                    ds.AcceptChanges();
 
+                    BuildingDataAssessor record = null;
                     for (int i = 1; i <= rowCount; i++) {
+                        record = new BuildingDataAssessor();
                         for (int j = 1; j <= colCount; j++) {
                             //MessageBox.Show(workSheet.Cells[i, j].Value.ToString());
-
+                            switch (j) {
+                                case 1:
+                                    record.Owner = workSheet.Cells[i, j].Value.ToString();
+                                    break;
+                                case 2:
+                                    record.BuildingLocation = workSheet.Cells[i, j].Value.ToString();
+                                    break;
+                                case 3:
+                                    record.LandArea = Convert.ToDouble(workSheet.Cells[i, j].Value.ToString());
+                                    break;
+                                case 4:
+                                    record.BuildingType = workSheet.Cells[i, j].Value.ToString();
+                                    break;
+                                case 5:
+                                    record.DateContructed = Convert.ToDateTime(workSheet.Cells[i, j].Value.ToString());
+                                    break;
+                                case 6:
+                                    record.BuildingCost = Convert.ToDouble(workSheet.Cells[i, j].Value.ToString());
+                                    break;
+                            }
                         }
+
+                        //DataRow newRow = ds.Tables[0].NewRow();
+                        ds.Tables[0].Rows.Add(new object[] {
+                            record.Owner,
+                            record.BuildingLocation,
+                            record.LandArea,
+                            record.BuildingType,
+                            record.DateContructed, 
+                            record.BuildingCost
+                        });
+                        //newRow[0] = record.Owner;
+
+                        ds.AcceptChanges();
+                        
+
 
                     //    // Lets insert something into our new table:
                     //    sqlite_cmd.CommandText = "INSERT INTO test (id, text) VALUES (1, 'Test Text 1');";                  
@@ -109,7 +149,8 @@ namespace Intangic.RPTP.Business.Impl
 
                     //// We are ready, now lets cleanup and close our connection:
                     //cn.Close();
-
+                    //ds.
+                    ds.WriteXml(request.SourceDataPath);
 
 
                     workBook.DisposeChildInstances();
@@ -121,10 +162,12 @@ namespace Intangic.RPTP.Business.Impl
 
                 //save to database
 
+
                 return response;
             }
             finally {
                 response = null;
+                ds = null;
             }
         }
 

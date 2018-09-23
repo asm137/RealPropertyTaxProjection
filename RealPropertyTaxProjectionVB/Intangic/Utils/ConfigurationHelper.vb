@@ -1,11 +1,18 @@
-﻿Imports System.Configuration
+﻿Imports System
+Imports System.Collections.Generic
+Imports System.Linq
+Imports System.Text
+Imports System.Threading.Tasks
+Imports System.Windows.Forms
+
+Imports System.Configuration
 
 
-Namespace Intagic.Utils
+Namespace Intangic.Utils
 
     Public Class ConfigurationHelper
 
-        Public Shared Function GetString() As String
+        Public Shared Function GetString(ByVal key As String) As String
             Dim value As String = Nothing
             Try
                 value = ConfigurationManager.AppSettings(key)

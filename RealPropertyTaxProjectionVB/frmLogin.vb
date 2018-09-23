@@ -13,7 +13,7 @@ Imports Intangic.RPTP.Business.Impl
 Imports Intangic.RPTP.Business.Interfaces
 Imports Intangic.RPTP.Domain
 Imports Intangic.RPTP.Factory
-Imports Intangic.Utils
+'Imports Intangic.Utils
 
 Imports FormUtils = RealPropertyTaxProjectionVB.Intangic.Utils
 

@@ -5,7 +5,7 @@ Imports Intangic.RPTP.Business.Impl
 Imports Intangic.RPTP.Business.Interfaces
 Imports Intangic.RPTP.Domain
 Imports Intangic.RPTP.Factory
-Imports Intangic.Utils
+'Imports Intangic.Utils
 
 Imports FormUtils = RealPropertyTaxProjectionVB.Intangic.Utils
 
@@ -40,6 +40,7 @@ Public Class frmImportFile
 
         request = New ImportBuildingDataFileRequest()
         request.SourceFilePath = Me.txtSourceFilePath.Text
+        request.SourceDataPath = FormUtils.ConfigurationHelper.GetString("DATA_TEMP_SOURCE")
 
         Try
             realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService()

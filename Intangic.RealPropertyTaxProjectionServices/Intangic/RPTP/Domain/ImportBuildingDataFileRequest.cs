@@ -9,10 +9,12 @@ namespace Intangic.RPTP.Domain
     public class ImportBuildingDataFileRequest
     {
         public string SourceFilePath { get; set; }
+        public string SourceDataPath { get; set; }
 
         public ImportBuildingDataFileRequest()
         {
             this.SourceFilePath = string.Empty;
+            this.SourceDataPath = string.Empty;
         }
     }
 }

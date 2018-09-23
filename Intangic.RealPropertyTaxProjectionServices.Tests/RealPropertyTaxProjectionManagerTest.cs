@@ -57,7 +57,7 @@ namespace Intangic.RealPropertyTaxProjectionServices.Tests
             //}
             response.Result = result;
 
-            Assert.AreEqual(RPTP.Enumerations.ResultResponse.Success, response.Result.Code, response.Result.Description);
+            Assert.AreEqual(RPTP.Enumerations.ResultResponse.Success, response.Result.IsSuccess, response.Result.Message);
 
             //dispose objects
             response = null;
