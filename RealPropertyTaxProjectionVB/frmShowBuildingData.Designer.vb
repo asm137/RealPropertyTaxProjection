@@ -28,7 +28,7 @@ Partial Class frmShowBuildingData
         Me.txtSearchText = New System.Windows.Forms.TextBox()
         Me.btnResetFilter = New System.Windows.Forms.Button()
         Me.btnApplyFilter = New System.Windows.Forms.Button()
-        Me.btnSettings = New System.Windows.Forms.Button()
+        Me.btnBuildingTypeSettings = New System.Windows.Forms.Button()
         Me.groupBox2 = New System.Windows.Forms.GroupBox()
         Me.label14 = New System.Windows.Forms.Label()
         Me.textBox13 = New System.Windows.Forms.TextBox()
@@ -65,6 +65,7 @@ Partial Class frmShowBuildingData
         Me.groupBox1 = New System.Windows.Forms.GroupBox()
         Me.textBox3 = New System.Windows.Forms.TextBox()
         Me.lblStatus = New System.Windows.Forms.Label()
+        Me.btnAssessmentLevelSettings = New System.Windows.Forms.Button()
         Me.groupBox3.SuspendLayout()
         Me.groupBox2.SuspendLayout()
         CType(Me.dtgBuildingData, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -118,14 +119,14 @@ Partial Class frmShowBuildingData
         Me.btnApplyFilter.Text = "Apply Filter"
         Me.btnApplyFilter.UseVisualStyleBackColor = True
         '
-        'btnSettings
+        'btnBuildingTypeSettings
         '
-        Me.btnSettings.Location = New System.Drawing.Point(903, 106)
-        Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(79, 23)
-        Me.btnSettings.TabIndex = 9
-        Me.btnSettings.Text = "Settings"
-        Me.btnSettings.UseVisualStyleBackColor = True
+        Me.btnBuildingTypeSettings.Location = New System.Drawing.Point(903, 106)
+        Me.btnBuildingTypeSettings.Name = "btnBuildingTypeSettings"
+        Me.btnBuildingTypeSettings.Size = New System.Drawing.Size(79, 53)
+        Me.btnBuildingTypeSettings.TabIndex = 9
+        Me.btnBuildingTypeSettings.Text = "Building Type Settings"
+        Me.btnBuildingTypeSettings.UseVisualStyleBackColor = True
         '
         'groupBox2
         '
@@ -459,13 +460,23 @@ Partial Class frmShowBuildingData
         Me.lblStatus.TabIndex = 15
         Me.lblStatus.Text = "Label15"
         '
+        'btnAssessmentLevelSettings
+        '
+        Me.btnAssessmentLevelSettings.Location = New System.Drawing.Point(903, 165)
+        Me.btnAssessmentLevelSettings.Name = "btnAssessmentLevelSettings"
+        Me.btnAssessmentLevelSettings.Size = New System.Drawing.Size(79, 53)
+        Me.btnAssessmentLevelSettings.TabIndex = 16
+        Me.btnAssessmentLevelSettings.Text = "Assessment Level Settings"
+        Me.btnAssessmentLevelSettings.UseVisualStyleBackColor = True
+        '
         'frmShowBuildingData
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(994, 412)
+        Me.Controls.Add(Me.btnAssessmentLevelSettings)
         Me.Controls.Add(Me.btnLogout)
-        Me.Controls.Add(Me.btnSettings)
+        Me.Controls.Add(Me.btnBuildingTypeSettings)
         Me.Controls.Add(Me.lblStatus)
         Me.Controls.Add(Me.btnExportData)
         Me.Controls.Add(Me.groupBox3)
@@ -490,7 +501,7 @@ Partial Class frmShowBuildingData
     Private WithEvents sfdExportData As SaveFileDialog
     Private WithEvents btnLogout As Button
     Private WithEvents groupBox3 As GroupBox
-    Private WithEvents btnSettings As Button
+    Private WithEvents btnBuildingTypeSettings As Button
     Private WithEvents groupBox2 As GroupBox
     Private WithEvents label14 As Label
     Private WithEvents textBox13 As TextBox
@@ -530,4 +541,5 @@ Partial Class frmShowBuildingData
     Private WithEvents textBox3 As TextBox
     Friend WithEvents lblStatus As Label
     Friend WithEvents txtSearchText As TextBox
+    Private WithEvents btnAssessmentLevelSettings As Button
 End Class

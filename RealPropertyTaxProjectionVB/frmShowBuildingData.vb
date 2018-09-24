@@ -122,4 +122,13 @@ Public Class frmShowBuildingData
     Private Sub frmShowBuildingData_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         End
     End Sub
+
+    Private Sub btnBuildingTypeSettings_Click(sender As Object, e As EventArgs) Handles btnBuildingTypeSettings.Click
+        frmBuildingTypeSettings.ShowDialog()
+
+        'compute the data
+
+        'load the data
+
+    End Sub
 End Class
