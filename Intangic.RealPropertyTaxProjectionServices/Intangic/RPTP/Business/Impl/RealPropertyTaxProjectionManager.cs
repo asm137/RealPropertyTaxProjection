@@ -30,6 +30,7 @@ namespace Intangic.RPTP.Business.Impl
 
                     response.DataSource = new DataSet();
                     response.DataSource.Tables.Add(dt);
+                    response.DataSource.AcceptChanges();
                 }
 
                 return response;
@@ -208,6 +209,7 @@ namespace Intangic.RPTP.Business.Impl
             Excel.Application excelApplication = null;
 
             try {
+                //Directory.CreateDirectory(Path.GetDirectoryName(request.DataFilePath));
                 response = new ExportBuildingDataAssessorFileResponse();
                 
                 //write to excel
@@ -263,6 +265,79 @@ namespace Intangic.RPTP.Business.Impl
                 if (excelApplication != null)
                     excelApplication.Dispose();
                 excelApplication = null;
+            }
+        }
+
+        
+        public LoadBuildingTypeSettingResponse LoadBuildingTypeSetting(LoadBuildingTypeSettingRequest request) {
+            LoadBuildingTypeSettingResponse response = null;
+
+            try {
+                response = new LoadBuildingTypeSettingResponse();
+                DataTable dt = new DataTable();
+                dt.TableName = Path.GetFileNameWithoutExtension(request.SourceFilePath);
+
+                if (File.Exists(request.SourceFilePath)) {    
+                    dt.ReadXml(request.SourceFilePath);
+                }
+                else {
+                    dt.Columns.Add("BuildingType", typeof(System.String));
+                    dt.Columns.Add("UnitValueFrom", typeof(System.Decimal));
+                    dt.Columns.Add("UnitValueTo", typeof(System.Decimal));
+                    dt.AcceptChanges();
+                }
+
+                response.DataSource = new DataSet();
+                response.DataSource.Tables.Add(dt);
+                response.DataSource.AcceptChanges();
+                response.Result.IsSuccess = true;
+
+                return response;
+            }
+            finally {
+                response = null;
+            }
+        }
+
+        public SaveBuildingTypeSettingResponse SaveBuildingTypeSetting(SaveBuildingTypeSettingRequest request) {
+            SaveBuildingTypeSettingResponse response = null;
+
+            try {
+                Directory.CreateDirectory(Path.GetDirectoryName(request.DataFilePath));
+                response = new SaveBuildingTypeSettingResponse();
+
+                if (request.IsAddRecord) {
+                    DataRow newrow = request.DataSource.Tables[0].NewRow();
+                    newrow[0] = request.BuildingAssessorTypeSetting.BuildingType;
+                    newrow[1] = request.BuildingAssessorTypeSetting.UnitValueFrom;
+                    newrow[2] = request.BuildingAssessorTypeSetting.UnitValueTo;
+                    request.DataSource.Tables[0].Rows.Add(newrow);
+                    request.DataSource.AcceptChanges();
+                }
+                else if (request.IsDeleteRecord.Equals(false) && request.IsAddRecord.Equals(false)) {
+                    request.DataSource.Tables[0].Rows[request.RowIndex][0] = request.BuildingAssessorTypeSetting.BuildingType;
+                    request.DataSource.Tables[0].Rows[request.RowIndex][1] = request.BuildingAssessorTypeSetting.UnitValueFrom;
+                    request.DataSource.Tables[0].Rows[request.RowIndex][2] = request.BuildingAssessorTypeSetting.UnitValueTo;
+                    request.DataSource.AcceptChanges();
+                }
+                else if (request.IsDeleteRecord) {
+                    request.DataSource.Tables[0].Rows.RemoveAt(request.RowIndex);
+                    request.DataSource.AcceptChanges();
+                }
+
+                //save the changes
+                request.DataSource.WriteXml(request.DataFilePath, XmlWriteMode.WriteSchema);
+
+                //load the datasource
+                DataSet ds = new DataSet();
+                ds.ReadXml(request.DataFilePath);
+                response.DataSource = ds;
+                response.Result.IsSuccess = true;
+                response.Result.Message = "Record list modification success.";
+                return response;
+            }
+            finally {
+                response = null;
             }
         }
     }

@@ -21,5 +21,9 @@ namespace Intangic.RPTP.Business.Interfaces
         ComputeEquivalentTaxResponse ComputeEquivalentTax(ComputeEquivalentTaxRequest request);
 
         ExportBuildingDataAssessorFileResponse ExportBuildingDataAssessorFile(ExportBuildingDataAssessorFileRequest request);
+
+        SaveBuildingTypeSettingResponse SaveBuildingTypeSetting(SaveBuildingTypeSettingRequest request);
+
+        LoadBuildingTypeSettingResponse LoadBuildingTypeSetting(LoadBuildingTypeSettingRequest request);
     }
 }

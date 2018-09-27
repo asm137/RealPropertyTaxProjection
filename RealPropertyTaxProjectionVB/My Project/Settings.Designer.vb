@@ -77,6 +77,32 @@ Namespace My
                 Me("PARAM_TAX_RATE_PERCENT") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\Apps\RealPropertyTaxProjection\TempDataSource\BuildingAssessorSettingSource.xm"& _ 
+            "l")>  _
+        Public Property DATA_BUILDING_ASSESSOR_SETTING_SOURCE() As String
+            Get
+                Return CType(Me("DATA_BUILDING_ASSESSOR_SETTING_SOURCE"),String)
+            End Get
+            Set
+                Me("DATA_BUILDING_ASSESSOR_SETTING_SOURCE") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\Apps\RealPropertyTaxProjection\TempDataSource\BuildingAssessmentLevelSettingSo"& _ 
+            "urce.xml")>  _
+        Public Property DATA_ASSESSMENT_LEVEL_SETTING_SOURCE() As String
+            Get
+                Return CType(Me("DATA_ASSESSMENT_LEVEL_SETTING_SOURCE"),String)
+            End Get
+            Set
+                Me("DATA_ASSESSMENT_LEVEL_SETTING_SOURCE") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

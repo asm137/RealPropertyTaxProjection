@@ -8,5 +8,11 @@
     <Setting Name="PARAM_TAX_RATE_PERCENT" Type="System.String" Scope="User">
       <Value Profile="(Default)">2.5</Value>
     </Setting>
+    <Setting Name="DATA_BUILDING_ASSESSOR_SETTING_SOURCE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Apps\RealPropertyTaxProjection\TempDataSource\BuildingAssessorSettingSource.xml</Value>
+    </Setting>
+    <Setting Name="DATA_ASSESSMENT_LEVEL_SETTING_SOURCE" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Apps\RealPropertyTaxProjection\TempDataSource\BuildingAssessmentLevelSettingSource.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

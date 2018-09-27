@@ -32,6 +32,9 @@ Partial Class frmBuildingTypeSettings
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.dtgBuildingTypeSettings = New System.Windows.Forms.DataGridView()
+        Me.BuildingType = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitValueFrom = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitValueTo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
@@ -50,7 +53,7 @@ Partial Class frmBuildingTypeSettings
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(20, 134)
+        Me.Label1.Location = New System.Drawing.Point(20, 55)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(67, 13)
         Me.Label1.TabIndex = 1
@@ -59,7 +62,7 @@ Partial Class frmBuildingTypeSettings
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(20, 52)
+        Me.Label2.Location = New System.Drawing.Point(20, 98)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(78, 13)
         Me.Label2.TabIndex = 2
@@ -68,7 +71,7 @@ Partial Class frmBuildingTypeSettings
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(20, 78)
+        Me.Label3.Location = New System.Drawing.Point(20, 124)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(67, 13)
         Me.Label3.TabIndex = 3
@@ -76,21 +79,21 @@ Partial Class frmBuildingTypeSettings
         '
         'txtUnitValueFrom
         '
-        Me.txtUnitValueFrom.Location = New System.Drawing.Point(151, 49)
+        Me.txtUnitValueFrom.Location = New System.Drawing.Point(151, 95)
         Me.txtUnitValueFrom.Name = "txtUnitValueFrom"
         Me.txtUnitValueFrom.Size = New System.Drawing.Size(100, 20)
         Me.txtUnitValueFrom.TabIndex = 4
         '
         'txtUnitValueTo
         '
-        Me.txtUnitValueTo.Location = New System.Drawing.Point(151, 75)
+        Me.txtUnitValueTo.Location = New System.Drawing.Point(151, 121)
         Me.txtUnitValueTo.Name = "txtUnitValueTo"
         Me.txtUnitValueTo.Size = New System.Drawing.Size(100, 20)
         Me.txtUnitValueTo.TabIndex = 5
         '
         'txtBuildingType
         '
-        Me.txtBuildingType.Location = New System.Drawing.Point(151, 131)
+        Me.txtBuildingType.Location = New System.Drawing.Point(151, 52)
         Me.txtBuildingType.Name = "txtBuildingType"
         Me.txtBuildingType.Size = New System.Drawing.Size(100, 20)
         Me.txtBuildingType.TabIndex = 6
@@ -115,11 +118,34 @@ Partial Class frmBuildingTypeSettings
         '
         'dtgBuildingTypeSettings
         '
+        Me.dtgBuildingTypeSettings.AllowUserToAddRows = False
+        Me.dtgBuildingTypeSettings.AllowUserToDeleteRows = False
         Me.dtgBuildingTypeSettings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgBuildingTypeSettings.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.BuildingType, Me.UnitValueFrom, Me.UnitValueTo})
         Me.dtgBuildingTypeSettings.Location = New System.Drawing.Point(294, 42)
         Me.dtgBuildingTypeSettings.Name = "dtgBuildingTypeSettings"
+        Me.dtgBuildingTypeSettings.RowHeadersVisible = False
+        Me.dtgBuildingTypeSettings.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgBuildingTypeSettings.Size = New System.Drawing.Size(363, 197)
         Me.dtgBuildingTypeSettings.TabIndex = 9
+        '
+        'BuildingType
+        '
+        Me.BuildingType.DataPropertyName = "BuildingType"
+        Me.BuildingType.HeaderText = "BuildingType"
+        Me.BuildingType.Name = "BuildingType"
+        '
+        'UnitValueFrom
+        '
+        Me.UnitValueFrom.DataPropertyName = "UnitValueFrom"
+        Me.UnitValueFrom.HeaderText = "UnitValueFrom"
+        Me.UnitValueFrom.Name = "UnitValueFrom"
+        '
+        'UnitValueTo
+        '
+        Me.UnitValueTo.DataPropertyName = "UnitValueTo"
+        Me.UnitValueTo.HeaderText = "UnitValueTo"
+        Me.UnitValueTo.Name = "UnitValueTo"
         '
         'btnClear
         '
@@ -167,6 +193,7 @@ Partial Class frmBuildingTypeSettings
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnAdd)
         Me.Name = "frmBuildingTypeSettings"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmBuildingTypeSettings"
         CType(Me.dtgBuildingTypeSettings, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -187,4 +214,7 @@ Partial Class frmBuildingTypeSettings
     Friend WithEvents btnClear As Button
     Friend WithEvents btnEdit As Button
     Friend WithEvents btnCancel As Button
+    Friend WithEvents BuildingType As DataGridViewTextBoxColumn
+    Friend WithEvents UnitValueFrom As DataGridViewTextBoxColumn
+    Friend WithEvents UnitValueTo As DataGridViewTextBoxColumn
 End Class
