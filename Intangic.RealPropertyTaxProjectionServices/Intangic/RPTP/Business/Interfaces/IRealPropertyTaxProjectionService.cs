@@ -25,5 +25,10 @@ namespace Intangic.RPTP.Business.Interfaces
         SaveBuildingTypeSettingResponse SaveBuildingTypeSetting(SaveBuildingTypeSettingRequest request);
 
         LoadBuildingTypeSettingResponse LoadBuildingTypeSetting(LoadBuildingTypeSettingRequest request);
+
+        SaveAssessmentLevelSettingResponse SaveAssessmentLevelSetting(SaveAssessmentLevelSettingRequest request);
+
+        LoadAssessmentLevelSettingResponse LoadAssessmentLevelSetting(LoadAssessmentLevelSettingRequest request);
+
     }
 }

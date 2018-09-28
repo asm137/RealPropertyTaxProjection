@@ -17,7 +17,7 @@ Imports Intangic.RPTP.Factory
 Imports FormUtils = RealPropertyTaxProjectionVB.Intangic.Utils
 
 
-Public Class frmBuildingTypeSettings
+Public Class frmAssessmentLevelSettings
 
 
     Public Property IsAddRecord As Boolean
@@ -27,10 +27,10 @@ Public Class frmBuildingTypeSettings
 
 
     Private Sub ClearFields()
-        Me.txtBuildingType.Text = String.Empty
-        Me.txtUnitValueFrom.Text = String.Empty
-        Me.txtUnitValueTo.Text = String.Empty
-        Me.txtBuildingType.Focus()
+        Me.txtAssessmentLevel.Text = String.Empty
+        Me.txtMarketValueFrom.Text = String.Empty
+        Me.txtMarketValueTo.Text = String.Empty
+        Me.txtAssessmentLevel.Focus()
     End Sub
 
     Private Sub ResetEditRecordMode()
@@ -50,49 +50,49 @@ Public Class frmBuildingTypeSettings
 
 
     Private Sub LoadData()
-        Dim request As LoadBuildingTypeSettingRequest = Nothing
-        Dim response As LoadBuildingTypeSettingResponse = Nothing
+        Dim request As LoadAssessmentLevelSettingRequest = Nothing
+        Dim response As LoadAssessmentLevelSettingResponse = Nothing
 
-        request = New LoadBuildingTypeSettingRequest
+        request = New LoadAssessmentLevelSettingRequest
         With request
-            .SourceFilePath = FormUtils.ConfigurationHelper.GetString("DATA_BUILDING_ASSESSOR_SETTING_SOURCE")
+            .SourceFilePath = FormUtils.ConfigurationHelper.GetString("DATA_ASSESSMENT_LEVEL_SETTING_SOURCE")
         End With
 
         Program.realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService()
-        response = Program.realPropertyTaxProjectionManager.LoadBuildingTypeSetting(request)
+        response = Program.realPropertyTaxProjectionManager.LoadAssessmentLevelSetting(request)
 
         If response.Result.IsSuccess.Equals(True) Then
             'load data from database
             Dim bs As New BindingSource()
             bs.DataSource = response.DataSource
-            Me.dtgBuildingTypeSettings.DataSource = bs
-            Me.dtgBuildingTypeSettings.DataMember = bs.DataSource.Tables(0).TableName
-            Me.dtgBuildingTypeSettings.RefreshEdit()
+            Me.dtgAssessmentLevelSettings.DataSource = bs
+            Me.dtgAssessmentLevelSettings.DataMember = bs.DataSource.Tables(0).TableName
+            Me.dtgAssessmentLevelSettings.RefreshEdit()
             'Dim ds As New DataSet
             'Dim dt As New DataTable
             'dt.Columns.Add("a", GetType(System.String))
             'dt.AcceptChanges()
             'ds.Tables.Add(dt)
             'ds.AcceptChanges()
-            'Me.dtgBuildingTypeSettings.DataSource = ds
+            'Me.dtgAssessmentLevelSettings.DataSource = ds
         End If
     End Sub
 
     Private Sub SaveData()
-        Dim request As SaveBuildingTypeSettingRequest = Nothing
-        Dim response As SaveBuildingTypeSettingResponse = Nothing
+        Dim request As SaveAssessmentLevelSettingRequest = Nothing
+        Dim response As SaveAssessmentLevelSettingResponse = Nothing
 
         Try
-            request = New SaveBuildingTypeSettingRequest
+            request = New SaveAssessmentLevelSettingRequest
             With request
-                .BuildingAssessorTypeSetting = New BuildingAssessorTypeSetting
-                With .BuildingAssessorTypeSetting
-                    .BuildingType = Me.txtBuildingType.Text
-                    .UnitValueFrom = Me.txtUnitValueFrom.Text
-                    .UnitValueTo = Me.txtUnitValueTo.Text
+                .AssessmentLevelSetting = New AssessmentLevelSetting
+                With .AssessmentLevelSetting
+                    .AssessmentLevel = Me.txtAssessmentLevel.Text
+                    .MarketValueFrom = Me.txtMarketValueFrom.Text
+                    .MarketValueTo = Me.txtMarketValueTo.Text
                 End With
-                .DataSource = CType(Me.dtgBuildingTypeSettings.DataSource, BindingSource).DataSource 'CType(Me.dtgBuildingTypeSettings.DataSource, BindingSource).DataSource
-                .DataFilePath = FormUtils.ConfigurationHelper.GetString("DATA_BUILDING_ASSESSOR_SETTING_SOURCE")
+                .DataSource = CType(Me.dtgAssessmentLevelSettings.DataSource, BindingSource).DataSource 'CType(Me.dtgAssessmentLevelSettings.DataSource, BindingSource).DataSource
+                .DataFilePath = FormUtils.ConfigurationHelper.GetString("DATA_ASSESSMENT_LEVEL_SETTING_SOURCE")
 
                 .IsAddRecord = Me.IsAddRecord
                 .IsDeleteRecord = Me.IsDeleteRecord
@@ -105,11 +105,11 @@ Public Class frmBuildingTypeSettings
             End With
 
             Program.realPropertyTaxProjectionManager = BusinessDelegateFactory.GetInstance().GetRealPropertyTaxProjectionService()
-            response = Program.realPropertyTaxProjectionManager.SaveBuildingTypeSetting(request)
+            response = Program.realPropertyTaxProjectionManager.SaveAssessmentLevelSetting(request)
             If response.Result.IsSuccess.Equals(True) Then
                 FormUtils.FormHelper.MessageShow(response.Result.Message)
                 Me.ClearFields()
-                'Me.dtgBuildingTypeSettings.DataSource = response.DataSource
+                'Me.dtgAssessmentLevelSettings.DataSource = response.DataSource
                 Me.LoadData()
 
                 Me.ResetEditRecordMode()
@@ -130,8 +130,8 @@ Public Class frmBuildingTypeSettings
     End Sub
 
     Private Function HasData() As Boolean
-        Return Not Me.dtgBuildingTypeSettings.DataSource Is Nothing AndAlso
-                Me.dtgBuildingTypeSettings.Rows.Count > 0
+        Return Not Me.dtgAssessmentLevelSettings.DataSource Is Nothing AndAlso
+                Me.dtgAssessmentLevelSettings.Rows.Count > 0
     End Function
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
@@ -150,9 +150,9 @@ Public Class frmBuildingTypeSettings
 
         Me.IsAddRecord = False
         Me.IsDeleteRecord = True
-        'Me.SelectedRowIndex = ctype(Me.dtgBuildingTypeSettings.DataSource, Dataset).Tables(0).
-        'Me.SelectedRowIndex = dtgBuildingTypeSettings.SelectedRows(0)
-        Me.SelectedRowIndex = Me.dtgBuildingTypeSettings.SelectedRows(0).Index 'CType(Me.dtgBuildingTypeSettings.DataSource, BindingSource).Position
+        'Me.SelectedRowIndex = ctype(Me.dtgAssessmentLevelSettings.DataSource, Dataset).Tables(0).
+        'Me.SelectedRowIndex = dtgAssessmentLevelSettings.SelectedRows(0)
+        Me.SelectedRowIndex = Me.dtgAssessmentLevelSettings.SelectedRows(0).Index 'CType(Me.dtgAssessmentLevelSettings.DataSource, BindingSource).Position
         Me.GetValues()
 
         If FormUtils.FormHelper.MessageConfirmDelete("Do you want to delete the record?") = DialogResult.Yes Then
@@ -164,7 +164,7 @@ Public Class frmBuildingTypeSettings
         End If
     End Sub
 
-    Private Sub frmBuildingTypeSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmAssessmentLevelSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'load the data source
         Me.LoadData()
 
@@ -186,20 +186,20 @@ Public Class frmBuildingTypeSettings
 
         Me.IsAddRecord = False
         Me.IsDeleteRecord = False
-        Me.SelectedRowIndex = Me.dtgBuildingTypeSettings.SelectedRows(0).Index 'CType(Me.dtgBuildingTypeSettings.DataSource, BindingSource).Position
+        Me.SelectedRowIndex = Me.dtgAssessmentLevelSettings.SelectedRows(0).Index 'CType(Me.dtgAssessmentLevelSettings.DataSource, BindingSource).Position
 
         Me.GetValues()
         Me.EnableEditButtons()
     End Sub
 
     Private Sub GetValues()
-        Dim ds As DataSet = CType(Me.dtgBuildingTypeSettings.DataSource, BindingSource).DataSource
-        Me.txtBuildingType.Text = ds.Tables(0).Rows(Me.SelectedRowIndex).Item(0)
-        Me.txtUnitValueFrom.Text = ds.Tables(0).Rows(Me.SelectedRowIndex).Item(1)
-        Me.txtUnitValueTo.Text = ds.Tables(0).Rows(Me.SelectedRowIndex).Item(2)
+        Dim ds As DataSet = CType(Me.dtgAssessmentLevelSettings.DataSource, BindingSource).DataSource
+        Me.txtAssessmentLevel.Text = ds.Tables(0).Rows(Me.SelectedRowIndex).Item(0)
+        Me.txtMarketValueFrom.Text = ds.Tables(0).Rows(Me.SelectedRowIndex).Item(1)
+        Me.txtMarketValueTo.Text = ds.Tables(0).Rows(Me.SelectedRowIndex).Item(2)
     End Sub
 
-    Private Sub frmBuildingTypeSettings_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
-        Me.dtgBuildingTypeSettings.DataSource = Nothing
+    Private Sub frmAssessmentLevelSettings_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        Me.dtgAssessmentLevelSettings.DataSource = Nothing
     End Sub
 End Class

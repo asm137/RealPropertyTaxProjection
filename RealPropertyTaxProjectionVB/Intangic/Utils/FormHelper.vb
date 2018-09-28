@@ -13,6 +13,10 @@ Namespace Intangic.Utils
             MessageBox.Show(message)
         End Sub
 
+        Public Shared Function MessageConfirmDelete(ByVal message As String, Optional title As String = "Delete") As DialogResult
+            Return MessageBox.Show(message, title, MessageBoxButtons.YesNo)
+        End Function
+
     End Class
 
 End Namespace

@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAssessmentLevelSettings.Designer.vb">
+      <DependentUpon>frmAssessmentLevelSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAssessmentLevelSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmBuildingTypeSettings.Designer.vb">
       <DependentUpon>frmBuildingTypeSettings.vb</DependentUpon>
     </Compile>
@@ -117,6 +123,9 @@
     <Compile Include="Program.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmAssessmentLevelSettings.resx">
+      <DependentUpon>frmAssessmentLevelSettings.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBuildingTypeSettings.resx">
       <DependentUpon>frmBuildingTypeSettings.vb</DependentUpon>
     </EmbeddedResource>

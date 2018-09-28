@@ -65,10 +65,14 @@
     <Compile Include="Intangic\RPTP\Business\Interfaces\IRealPropertyTaxProjectionService.cs" />
     <Compile Include="Intangic\RPTP\Data\DAO\Impl\NetOfficeDAO.cs" />
     <Compile Include="Intangic\RPTP\Data\DAO\Interfaces\INetOfficeDAO.cs" />
+    <Compile Include="Intangic\RPTP\Domain\AssessmentLevelSetting.cs" />
     <Compile Include="Intangic\RPTP\Domain\BuildingAssessorTypeSetting.cs" />
     <Compile Include="Intangic\RPTP\Domain\BuildingDataAssessor.cs" />
+    <Compile Include="Intangic\RPTP\Domain\LoadAssessmentLevelSettingRequest.cs" />
+    <Compile Include="Intangic\RPTP\Domain\LoadAssessmentLevelSettingResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\LoadBuildingTypeSettingResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\LoadBuildingTypeSettingRequest.cs" />
+    <Compile Include="Intangic\RPTP\Domain\SaveAssessmentLevelSettingRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\SaveBuildingTypeSettingRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\ComputeEquivalentTaxRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\ComputeEquivalentTaxResponse.cs" />
@@ -86,6 +90,7 @@
     <Compile Include="Intangic\RPTP\Domain\LogoutRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\LogoutResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\Result.cs" />
+    <Compile Include="Intangic\RPTP\Domain\SaveAssessmentLevelSettingResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\SaveBuildingTypeSettingResponse.cs" />
     <Compile Include="Intangic\RPTP\Domain\SelectBuildingDataRecordRequest.cs" />
     <Compile Include="Intangic\RPTP\Domain\SelectBuildingDataRecordResponse.cs" />

@@ -125,10 +125,9 @@ Public Class frmShowBuildingData
 
     Private Sub btnBuildingTypeSettings_Click(sender As Object, e As EventArgs) Handles btnBuildingTypeSettings.Click
         frmBuildingTypeSettings.ShowDialog()
+    End Sub
 
-        'compute the data
-
-        'load the data
-
+    Private Sub btnAssessmentLevelSettings_Click(sender As Object, e As EventArgs) Handles btnAssessmentLevelSettings.Click
+        frmAssessmentLevelSettings.ShowDialog()
     End Sub
 End Class
