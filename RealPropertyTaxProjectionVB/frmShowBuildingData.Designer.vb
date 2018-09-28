@@ -74,6 +74,8 @@ Partial Class frmShowBuildingData
         '
         'btnLogout
         '
+        Me.btnLogout.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnLogout.Location = New System.Drawing.Point(903, 357)
         Me.btnLogout.Name = "btnLogout"
         Me.btnLogout.Size = New System.Drawing.Size(79, 24)
@@ -371,8 +373,9 @@ Partial Class frmShowBuildingData
         '
         'dtgBuildingData
         '
-        Me.dtgBuildingData.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.dtgBuildingData.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgBuildingData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgBuildingData.Location = New System.Drawing.Point(12, 242)
         Me.dtgBuildingData.Name = "dtgBuildingData"
@@ -473,7 +476,7 @@ Partial Class frmShowBuildingData
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(994, 412)
+        Me.ClientSize = New System.Drawing.Size(995, 412)
         Me.Controls.Add(Me.btnAssessmentLevelSettings)
         Me.Controls.Add(Me.btnLogout)
         Me.Controls.Add(Me.btnBuildingTypeSettings)
