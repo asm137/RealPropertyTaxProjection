@@ -12,6 +12,8 @@ using System.Data.SQLite;
 
 using Intangic.RPTP.Domain;
 using Intangic.RPTP.Business.Interfaces;
+using Intangic.Utils;
+
 
 namespace Intangic.RPTP.Business.Impl
 {
@@ -325,13 +327,7 @@ namespace Intangic.RPTP.Business.Impl
                     request.DataSource.AcceptChanges();
                 }
 
-                //save the changes
-                request.DataSource.WriteXml(request.DataFilePath, XmlWriteMode.WriteSchema);
-
-                //load the datasource
-                DataSet ds = new DataSet();
-                ds.ReadXml(request.DataFilePath);
-                response.DataSource = ds;
+                response.DataSource = new DataSetHelper().Reload(request.DataSource, request.DataFilePath); 
                 response.Result.IsSuccess = true;
                 response.Result.Message = "Record list modification success.";
                 return response;
@@ -398,13 +394,7 @@ namespace Intangic.RPTP.Business.Impl
                     request.DataSource.AcceptChanges();
                 }
 
-                //save the changes
-                request.DataSource.WriteXml(request.DataFilePath, XmlWriteMode.WriteSchema);
-
-                //load the datasource
-                DataSet ds = new DataSet();
-                ds.ReadXml(request.DataFilePath);
-                response.DataSource = ds;
+                response.DataSource = new DataSetHelper().Reload(request.DataSource, request.DataFilePath);
                 response.Result.IsSuccess = true;
                 response.Result.Message = "Record list modification success.";
                 return response;

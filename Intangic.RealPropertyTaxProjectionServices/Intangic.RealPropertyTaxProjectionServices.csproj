@@ -96,11 +96,11 @@
     <Compile Include="Intangic\RPTP\Domain\SelectBuildingDataRecordResponse.cs" />
     <Compile Include="Intangic\RPTP\Enumerations.cs" />
     <Compile Include="Intangic\RPTP\Factory\BusinessDelegateFactory.cs" />
+    <Compile Include="Intangic\Utils\DataSetHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Intangic\RPTP\Data\Support\" />
-    <Folder Include="Intangic\Utils\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

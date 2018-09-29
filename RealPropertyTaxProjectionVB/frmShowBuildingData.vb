@@ -20,7 +20,27 @@ Imports FormUtils = RealPropertyTaxProjectionVB.Intangic.Utils
 
 Public Class frmShowBuildingData
 
-    Private DataSource As List(Of BuildingDataAssessor) = Nothing
+    'Private DataSource As List(Of BuildingDataAssessor) = Nothing
+
+    'Public Property CurrentBinding As BindingSource
+    Private CurrentBinding As BindingSource
+
+    Private _DataSource As DataSet
+    Public Property DataSource As DataSet
+        Get
+            Return _DataSource
+        End Get
+        Set(value As DataSet)
+            _DataSource = value
+
+            Me.CurrentBinding = New BindingSource
+            Me.CurrentBinding.DataSource = _DataSource
+            Me.CurrentBinding.DataMember = _DataSource.Tables(0).TableName
+
+            Me.dtgBuildingData.DataSource = _DataSource
+        End Set
+    End Property
+
 
     Private Sub LoadData(ByVal sourceFilePath As String)
         Dim request As LoadBuildingDataAssessorFileRequest = Nothing
@@ -36,7 +56,8 @@ Public Class frmShowBuildingData
 
         If response.Result.IsSuccess.Equals(True) Then
             'load data from database
-            Me.dtgBuildingData.DataSource = response.DataSource
+            Me.DataSource = response.DataSource
+            'Me.dtgBuildingData.DataSource = Me.CurrentBinding 'response.DataSource
 
             'display status "Data loaded at yyyyMMdd"
             Me.lblStatus.Text = String.Format("{0} {1}", "Data loaded at", Now)
@@ -87,7 +108,8 @@ Public Class frmShowBuildingData
             request = New ExportBuildingDataAssessorFileRequest()
             With request
                 .SourceFilePath = Me.sfdExportData.FileName
-                .BuildingDataAssessors = Me.DataSource
+                'TODO: go back here...
+                '.BuildingDataAssessors = Me.DataSource
             End With
 
 
@@ -112,11 +134,13 @@ Public Class frmShowBuildingData
     End Sub
 
     Private Sub btnApplyFilter_Click(sender As Object, e As EventArgs) Handles btnApplyFilter.Click
-
+        'apply filter
     End Sub
 
     Private Sub btnResetFilter_Click(sender As Object, e As EventArgs) Handles btnResetFilter.Click
         Me.txtSearchText.Text = String.Empty
+
+        'apply filter
     End Sub
 
     Private Sub frmShowBuildingData_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
